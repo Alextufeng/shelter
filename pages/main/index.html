@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelter</title>
-    <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,14 +14,14 @@
         <div class="head_background">
             <header class="header_container">      
                 <div class="logo">
-                    <h1><a class="logo_link">Cozy House</a></h1>
+                    <h1><a class="logo_link" href="#">Cozy House</a></h1>
                     <p>Shelter for pets in Boston</p>
                 </div>
                 <div class="nav_menu">
                     <nav >
                         <ul class="nav_list">
                             <li class="nav_item"><a class="nav_link neo" href="#about">About the shelter</a></li>
-                            <li class="nav_item"><a class="nav_link" href="#friends">Our pets</a></li>
+                            <li class="nav_item"><a class="nav_link" href="../pets/index.html">Our pets</a></li>
                             <li class="nav_item"><a class="nav_link" href="#help">Help the shelter</a></li>
                             <li class="nav_item"><a class="nav_link" href="#contacts">Contacts</a></li>
                         </ul>
@@ -39,7 +39,7 @@
                 <div class="start_view">
                     <h2>Not only people need a house</h2>
                     <p>We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-                    <button>Make a friend</button>
+                    <button><a href="#friends">Make a friend</a></button>
                 </div>
                 <img src="../../assets/svg/start-screen-puppy.svg" alt="">
                 
@@ -55,30 +55,32 @@
         </section>
         <section class="friends" id="friends">
             <h2>Our friends who <br>are looking for a house</h2>
-            <div class="pet_cards">
+            <div class="pet_container">
                 <button class="b_left">
                     <img src="../../assets/png/Arrow_left.png" alt="to the left">
                 </button>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-katrine.png" alt="Katie photo">
-                    <h3>Katrine</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-jennifer.png" alt="Jenny photo">
-                    <h3>Jennifer</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-woody.png" alt="Woody photo">
-                    <h3>Woody</h3>
-                    <button>Learn more</button>
+                <div class="pet_cards">
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-katrine.png" alt="Katie photo">
+                        <h3>Katrine</h3>
+                        <button>Learn more</button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-jennifer.png" alt="Jenny photo">
+                        <h3>Jennifer</h3>
+                        <button>Learn more</button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-woody.png" alt="Woody photo">
+                        <h3>Woody</h3>
+                        <button>Learn more</button>
+                    </div>
                 </div>
                 <button class="b_right">
                     <img src="../../assets/png/Arrow_right.png" alt="to the right">
                 </button>
             </div>
-            <button>Get to know the rest</button>
+            <button><a href="../pets/index.html">Get to know the rest</a></button>
         </section>
         <section class="help" id="help">
             <h2>How you can help<br> our shelter</h2>

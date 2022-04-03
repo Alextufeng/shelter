@@ -1,14 +1,14 @@
 :root {
-    --color-button: #F1CDB3;
+    --color-primary: #F1CDB3;
     --color-button-hover: #FDDCC4;
-    --color-button-text: #292929;
-    --color-grey-text: #CDCDCD;
-    --color-h2h3-text: #545454;
+    --color-dark-3xl: #292929;
+    --color-dark-s: #CDCDCD;
+    --color-dark-l: #545454;
     --color-p-text: #4C4C4C;
     --color-white: #ffffff;
-    --color-light-bg: #F6F6F6;
+    --color-light-l: #F6F6F6;
     --color-pet-info: #FAFAFA;
-    --color-the-smallest: #B2B2B2;
+    --color-dark-m: #B2B2B2;
     --arial-reg: normal 20px 'Arial', sans-serif;
     --georgia-reg: normal 20px 'Georgia', serif;
     --arial-italic: italic 20px 'Arial', sans-serif;
@@ -22,6 +22,7 @@ html {
 }
 
 .wrapper {
+    
     max-width: 1280px;
     margin: 0 auto;
     min-height: 100%;
@@ -37,7 +38,7 @@ html {
 * {    
     margin: 0;
     padding: 0;
-    color: var(--color-button-text);
+    color: var(--color-dark-3xl);
 }
 
 button {
@@ -61,21 +62,20 @@ a {
     align-items: center;
 }
 
-.head_background,
 .footer_container {
-    background: url(assets/svg/noise_transparent.svg), radial-gradient(60% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+    background: url(../../assets/svg/noise_transparent.svg), radial-gradient(60% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 
 .header_container {
+    
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    color: var(--color-grey-text);
-    padding: 60px 40px;
+    padding: 30px 40px;
 }
 
 .header_container p {
-    color: var(--color-white);
+    color: var(--color-dark-3xl);
     align-self: center;
     font-family: 'Arial';
     font-style: normal;
@@ -92,13 +92,24 @@ a {
 }
 
 .logo_link {
+    position: relative;
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
     line-height: 110%;
     letter-spacing: 0.06em;
-    color: var(--color-button);
+    color: var(--color-dark-l);
+}
+
+.logo_link:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: -5px;
+    bottom: -30px;
+    left: -20px;
+    right: -20px;
 }
 
 .nav_menu {
@@ -114,7 +125,7 @@ a {
 }
 
 .nav_link {
-    color: var(--color-grey-text);
+    color: var(--color-dark-l);
     font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
@@ -123,52 +134,17 @@ a {
 }
 
 .nav_link:hover {
-    color: var(--color-white);
-    border-bottom: 3px solid var(--color-button);
+    color: var(--color-dark-3xl);
+    border-bottom: 3px solid var(--color-primary);
 }
 
 .neo {
-    color: var(--color-white);
-    border-bottom: 3px solid var(--color-button);
-}
-
-.main_content {
-    margin: 0 40px;
-    display: flex;
-    flex-flow: row wrap;
-    gap: 42px;
-}
-
-.start_view {
-    max-width: 460px;
-    display: flex;
-    flex-flow: column wrap;
-    gap: 42px;
-    align-self: center;
-    margin-bottom: 80px;
-}
-
-.start_view h2 {
-    color: var(--color-white);
-    max-width: 310px;
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 44px;
-    line-height: 130%;
-}
-
-.start_view p {
-    color: var(--color-grey-text);
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 160%;
+    color: var(--color-dark-3xl);
+    border-bottom: 3px solid var(--color-primary);
 }
 
 button {
-    color: var(--color-button-text);
+    color: var(--color-dark-3xl);
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
@@ -177,7 +153,7 @@ button {
     letter-spacing: 0.06em;
     width: 207px;
     height: 52px;
-    background-color: var(--color-button);
+    background-color: var(--color-primary);
     border-radius: 100px;
     transition: 0.5s;
 }
@@ -190,53 +166,18 @@ section {
     padding: 80px 0 100px 0;
 }
 
-.about {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    gap: 120px;
-}
-
-.about_text {
-    margin-top: 14px;
-    align-content: center;
-    max-width: 430px;
-    display: flex;
-    flex-flow: column wrap;
-    gap: 25px;
-}
-.about_text h2 {
-    max-width: 370px;
-    color: var(--color-h2h3-text);
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
-}
-
-.about_text p {
-    color: var(--color-p-text);
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 160%;
-}
-
 .friends {
     align-content: center;
     display: flex;
     flex-flow: column wrap;
-    gap: 60px;
-    background-color: var(--color-light-bg);
+    gap: 45px;
+    background-color: var(--color-light-l);
 }
 
 .friends h2 {
     align-self: center;
     max-width: 400px;
-    color: var(--color-h2h3-text);
+    color: var(--color-dark-l);
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
@@ -247,45 +188,12 @@ section {
 }
 
 .pet_cards {
-    position: relative;
     justify-content: center;
     display: flex;
     flex-flow: row wrap;
-    gap: 90px;
-}
-
-.b_left {
-    padding-bottom: 6px;
-    position: absolute;
-    top: 44%;
-    left: -10.5%;
-    width: 52px;
-    height: 52px; 
-    background-color: var(--color-light-bg);
-    border: 2px solid var(--color-button);
-    border-radius: 26px;
-    cursor: pointer;
-
-}
-
-.b_right {
-    padding-bottom: 6px;
-    position: absolute;
-    top: 44%;
-    right: -10.5%;
-    width: 52px;
-    height: 52px;
-    background-color: var(--color-light-bg);
-    border: 2px solid var(--color-button);
-    border-radius: 26px;
-    cursor: pointer;
-}
-
-.b_left:hover,
-.b_right:hover {
-    border: 2px solid var(--color-button-hover);
-    background-color: var(--color-button-hover);
-
+    gap: 40px;
+    row-gap: 30px;
+    padding: 15px 0;
 }
 
 .pet_info {
@@ -295,9 +203,17 @@ section {
     flex-flow: column wrap;
     gap: 30px;
 }
+
+.pet_info:hover {
+    transition: 0.5s;
+    transform: scale(1.07);
+    background-color: var(--color-dark-m);
+    cursor: pointer;
+}
+
 .pet_info h3 {
     text-align: center;
-    color: var(--color-h2h3-text);
+    color: var(--color-dark-l);
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
@@ -312,185 +228,46 @@ section {
     justify-content: center;
     width: 187px;
     background: none;
-    border: 2px solid var(--color-button);
+    border: 2px solid var(--color-primary);
 }
 .pet_info button:hover {
     background: var(--color-button-hover);
     border: 2px solid var(--color-button-hover);
 }
 
-.friends>button {
+.paging {
     align-self: center;
-    width: 261px;
-}
-
-.help {
-    align-content: center;
-    display: flex;
-    flex-flow: column wrap;
-    gap: 60px;
-}
-
-.help h2 {
-    color: var(--color-h2h3-text);
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 130%;
-    text-align: center;
-    letter-spacing: 0.06em;
-}
-
-.help_variants {
-    justify-content: center;
-    padding: 0 87px;
     display: flex;
     flex-flow: row wrap;
-    row-gap: 55px;
-    column-gap: 120px;
-}
-
-.help_item h3 {
-    color: var(--color-h2h3-text);
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    text-align: center;
-    letter-spacing: 0.06em;
-}
-
-.help_item {
-    background-position: center top;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-end;
-    gap: 30px;
-    height: 113px;
-    min-width: 60px;
-}
-
-.help_item:nth-child(1) {
-    background-image: url('./assets/svg/icon-pet-food.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(2) {
-    background-image: url('./assets/svg/icon-transportation.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(3) {
-    background-image: url('./assets/svg/icon-toys.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(4) {
-    background-image: url('./assets/svg/icon-bowls-and-cups.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(5) {
-    background-image: url('./assets/svg/icon-shampoos.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(6) {
-    background-image: url('./assets/svg/icon-vitamins.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(7) {
-    background-image: url('./assets/svg/icon-medicines.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(8) {
-    background-image: url('./assets/svg/icon-collars-leashes.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.help_item:nth-child(9) {
-    background-image: url('./assets/svg/icon-sleeping-area.svg');
-    background-size: 60px 60px;
-    background-repeat: no-repeat;
-}
-
-.donation {
-    justify-content: center;
-    background: var(--color-light-bg);
-    display: flex;
-    flex-flow: row wrap;
-    gap: 30px;
-}
-
-.donat_info {
-    max-width: 380px;
-    display: flex;
-    flex-flow: column wrap;
     gap: 20px;
 }
 
-.donat_info h2 {
-    color: var(--color-h2h3-text);
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
+.end_left {
+    
+    background-image: url(../../assets/svg/icon-marker.svg);
+    color: var(--color-dark-3xl);
 }
 
-.donat_info h3 {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
+.end_left,
+.b_left,
+.this_page,
+.b_right,
+.end_right {
+    padding-bottom: 6px;
+    width: 52px;
+    height: 52px;
+    background-color: var(--color-light-l);
+    border: 2px solid var(--color-primary);
+    border-radius: 26px;
+    cursor: pointer;
+
 }
 
-.donat_info p {
-    color: var(--color-the-smallest);
-    font-family: 'Arial';
-    font-style: italic;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-}
+.b_left:hover,
+.b_right:hover {
+    border: 2px solid var(--color-button-hover);
+    background-color: var(--color-button-hover);
 
-.text {
-    display: flex;
-    max-width: 350px;
-    height: 43px;
-    background: var(--color-button);
-    border-radius: 9px;
-    border: none;
-    background-image: url(./assets/svg/credit-card.svg);
-    background-repeat: no-repeat;
-    background-position: 15px 10px;
-}
-
-.card_number {
-    align-self: center;
-    padding-left: 60px;
-    color: var(--color-button-text);
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
 }
 
 .footer_container {
@@ -530,7 +307,7 @@ section {
     padding-left: 60px;
     max-width: 250px;
     height: 32px;
-    background-image: url(./assets/svg/icon-email.svg);
+    background-image: url(../../assets/svg/icon-email.svg);
     background-repeat: no-repeat;
     font-family: 'Georgia';
     font-style: normal;
@@ -544,7 +321,7 @@ section {
     padding-left: 60px;
     max-width: 240px;
     height: 32px;
-    background-image: url(./assets/svg/icon-phone.svg);
+    background-image: url(../../assets/svg/icon-phone.svg);
     background-repeat: no-repeat;
     font-family: 'Georgia';
     font-style: normal;
@@ -560,7 +337,7 @@ section {
     padding-left: 42px;
     max-width: 302px;
     height: 46px;
-    background-image: url(./assets/svg/icon-marker.svg);
+    background-image: url(../../assets/svg/icon-marker.svg);
     background-repeat: no-repeat;
     background-position: 0 center;
     font-family: 'Georgia';
@@ -577,7 +354,7 @@ section {
     padding-left: 42px;
     max-width: 302px;
     height: 32px;
-    background-image: url(./assets/svg/icon-marker.svg);
+    background-image: url(../../assets/svg/icon-marker.svg);
     background-repeat: no-repeat;
     font-family: 'Georgia';
     font-style: normal;
@@ -591,6 +368,6 @@ section {
 .frst_location a,
 .cell a,
 .email a {
-    color: var(--color-button);
+    color: var(--color-primary);
     
 }
