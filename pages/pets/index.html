@@ -13,89 +13,90 @@
     <div class="wrapper">
         <header class="header_container">      
             <div class="logo">
-                <h1><a class="logo_link" href="#">Cozy House</a></h1>
+                <h1><a class="logo_link" href="../main/index.html">Cozy House</a></h1>
                 <p>Shelter for pets in Boston</p>
             </div>
-            <div class="nav_menu">
-                <nav >
+            <nav class="navbar">
+                <div class="nav_menu">
+                    <input class="checkbox" type="checkbox" name="" id="toggle"/>
+                    <div class="burger_icon">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </div>
                     <ul class="nav_list">
                         <li class="nav_item"><a class="nav_link" href="../main/index.html">About the shelter</a></li>
-                        <li class="nav_item"><a class="nav_link neo" href="#friends">Our pets</a></li>
-                        <li class="nav_item"><a class="nav_link" href="#help">Help the shelter</a></li>
+                        <li class="nav_item"><a class="nav_link neo" href="#!">Our pets</a></li>
+                        <li class="nav_item"><a class="nav_link" href="../main/index.html#help">Help the shelter</a></li>
                         <li class="nav_item"><a class="nav_link" href="#contacts">Contacts</a></li>
                     </ul>
-                </nav>
-                <div class="burger_menu hidden">
-                    <div class="burger_icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                </div>
+            </nav>               
+        </header>
+        <main>    
+            <section class="friends" id="friends">
+                <h2>Our friends who <br>are looking for a house</h2>
+                <div class="pet_cards">
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-katrine.png" alt="Katie photo">
+                        <h3>Katrine</h3>
+                        <button>Learn more<span class="flare"></span></button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-jennifer.png" alt="Jenny photo">
+                        <h3>Jennifer</h3>
+                        <button>Learn more<span class="flare"></span></button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-woody.png" alt="Woody photo">
+                        <h3>Woody</h3>
+                        <button>Learn more<span class="flare"></span></button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-sophia.png" alt="Katie photo">
+                        <h3>Sophia</h3>
+                        <button>Learn more<span class="flare"></span></button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-timmy.png" alt="Jenny photo">
+                        <h3>Timmy</h3>
+                        <button>Learn more<span class="flare"></span></button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-charly.png" alt="Woody photo">
+                        <h3>Charly</h3>
+                        <button>Learn more<span class="flare"></span></button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-scarlet.png" alt="Katie photo">
+                        <h3>Scarlet</h3>
+                        <button>Learn more<span class="flare"></span></button>
+                    </div>
+                    <div class="pet_info">
+                        <img src="../../assets/png/pets-freddie.png" alt="Jenny photo">
+                        <h3>Freddie</h3>
+                        <button>Learn more<span class="flare"></span></button>
                     </div>
                 </div>
-            </div>                
-        </header>       
-        <section class="friends" id="friends">
-            <h2>Our friends who <br>are looking for a house</h2>
-            <div class="pet_cards">
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-katrine.png" alt="Katie photo">
-                    <h3>Katrine</h3>
-                    <button>Learn more</button>
+                <div class="paging">
+                    <button class="end_left" disabled>
+                        <a href="#!">&#60;&#60;</a>
+                    </button>
+                    <button class="b_left" disabled>
+                        <a href="#!">&#60;</a>
+                    </button>
+                    <button class="this_page page_number">
+                        <a href="#!">1</a>
+                    </button>
+                    <button class="b_right">
+                        <a href="#!">&#62;</a>
+                    </button>
+                    <button class="end_right">
+                        <a href="#!">&#62;&#62;</a>
+                    </button>
                 </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-jennifer.png" alt="Jenny photo">
-                    <h3>Jennifer</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-woody.png" alt="Woody photo">
-                    <h3>Woody</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-sophia.png" alt="Katie photo">
-                    <h3>Sophia</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-timmy.png" alt="Jenny photo">
-                    <h3>Timmy</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-charly.png" alt="Woody photo">
-                    <h3>Charly</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-scarlet.png" alt="Katie photo">
-                    <h3>Scarlet</h3>
-                    <button>Learn more</button>
-                </div>
-                <div class="pet_info">
-                    <img src="../../assets/png/pets-freddie.png" alt="Jenny photo">
-                    <h3>Freddie</h3>
-                    <button>Learn more</button>
-                </div>
-            </div>
-            <div class="paging">
-                <button class="end_right">
-                    <a href="#"></a>
-                </button>
-                <button class="b_left">
-                    <img src="../../assets/png/Arrow_left.png" alt="to the right">
-                </button>
-                <button class="this_page">
-                    <img src="../../assets/png/Arrow_right.png" alt="to the right">
-                </button>
-                <button class="b_right">
-                    <img src="../../assets/png/Arrow_right.png" alt="to the right">
-                </button>
-                <button class="end_right">
-                    <img src="../../assets/png/Arrow_right.png" alt="to the right">
-                </button>
-            </div>
-        </section>                      
+            </section>
+        </main>                 
         <footer class="footer_container">
             <div class="contacts"  id="contacts">
                 <h2>For questions and suggestions</h2>
@@ -115,7 +116,7 @@
                     <a target="_blank" href="https://www.google.com.hk/maps/search/18+South+Park,+London+/@51.4612205,-0.2479015,11z/data=!3m1!4b1?hl=en">18 South Park, London </a>
                 </div>
             </div>
-            <img src="../../assets/svg/footer-puppy.svg" alt="footer-puppy">
+            <img src="../../assets/png/footer-puppy.png" alt="footer-puppy">
         </footer>
     </div>
     <script src="./index.js"></script>
