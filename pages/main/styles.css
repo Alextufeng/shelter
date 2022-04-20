@@ -1080,8 +1080,6 @@ section {
 }
 
 .frst_location {
-    display: flex;
-    align-items: center;
     padding-left: 42px;
     max-width: 302px;
     height: 46px;
@@ -1195,18 +1193,14 @@ section {
         left: 0px;
         gap: 40px;
     }
-    
-    .frst_location a {
-        width: 310px;
-    }
 
     .adress {
-        left: 0px;
+        left: -3px;
         gap: 40px;
     }
 
     .adress h2 {
-        padding-left: 32px;
+        padding-left: 30px;
     }
 
     .footer_container img {
