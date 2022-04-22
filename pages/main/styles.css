@@ -19,6 +19,10 @@ html {
     box-sizing: border-box;
 }
 
+body.active {
+    overflow: hidden;
+}
+
 .wrapper {
     max-width: 1280px;
     margin: 0 auto;
@@ -229,6 +233,10 @@ button a:before {
         flex-direction: column;
         gap: 8px;
     }
+
+    .nav_menu .burger_icon:hover {
+        cursor: pointer;
+    }
   
     .nav_menu .burger_icon .line {
         display: block;
@@ -277,11 +285,13 @@ button a:before {
         z-index: 9;
     }
  
-    .nav_menu input[type="checkbox"]:checked ~ .nav_list {
+    /*.nav_menu input[type="checkbox"]:checked ~*/ 
+    .nav_list.active {
         transform: translate(-71%);
     }
 
-    .nav_menu input[type="checkbox"]:checked ~ .burger_icon {
+    /*.nav_menu input[type="checkbox"]:checked ~*/ 
+    .burger_icon.active {
         transform: rotateZ(270deg);
     }
 /*Бургер. Конец.*/
