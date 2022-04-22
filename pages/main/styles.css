@@ -206,7 +206,7 @@ button a:before {
         width: 40px;
     }
   
-    .nav_menu input[type="checkbox"] {
+    /*.nav_menu input[type="checkbox"] {
         position: absolute;
         display: block;
         height: 50px;
@@ -219,7 +219,7 @@ button a:before {
 
     .nav_menu input[type="checkbox"]:hover {
         cursor: pointer;
-    }
+    }*/
   
     .nav_menu .burger_icon {
         display: block;

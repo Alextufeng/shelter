@@ -18,6 +18,9 @@ html {
     box-sizing: border-box;
 }
 
+body.active {
+    overflow: hidden;
+}
 
 /*прибиваем подвал к низу страницы. начало=>*/
 html,
@@ -214,7 +217,7 @@ main {
         width: 40px;
     }
   
-    .nav_menu input[type="checkbox"] {
+    /*.nav_menu input[type="checkbox"] {
         position: absolute;
         display: block;
         height: 50px;
@@ -227,7 +230,7 @@ main {
 
     .nav_menu input[type="checkbox"]:hover {
         cursor: pointer;
-    }
+    }*/
   
     .nav_menu .burger_icon {
         display: block;
@@ -242,6 +245,10 @@ main {
         gap: 8px;
     }
   
+    .nav_menu .burger_icon:hover {
+        cursor: pointer;
+    }
+    
     .nav_menu .burger_icon .line {
         display: block;
         height: 2px;
@@ -287,11 +294,13 @@ main {
         z-index: 9;
     }
  
-    .nav_menu input[type="checkbox"]:checked ~ .nav_list {
+    /*.nav_menu input[type="checkbox"]:checked ~*/ 
+    .nav_list.active {
         transform: scale(1) translate(-72%);
     }
 
-    .nav_menu input[type="checkbox"]:checked ~ .burger_icon {
+    /*.nav_menu input[type="checkbox"]:checked ~*/ 
+    .burger_icon.active {
         transform: rotateZ(270deg);
     }
 /*Бургер. Конец. 
