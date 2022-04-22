@@ -6,15 +6,15 @@ const toggleMenu = function(){
 	menu.classList.toggle('active');
     burger.classList.toggle('active');
     body.classList.toggle('active');
+    body.classList.toggle('overlay');
 };
 
-/*
-const menuLink = document.getElementsByClassName('.nav_item');
+const menuLink = document.querySelectorAll('.nav_link');
 for (let i=0 ; i<menuLink.length; i++) {
   menuLink[i].addEventListener("click", function(){
     toggleMenu();
   });
-}*/
+}
 
 burger.addEventListener('click', function(e) {
     e.stopPropagation();
