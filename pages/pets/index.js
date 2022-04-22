@@ -1,12 +1,14 @@
 const body = document.querySelector('body')
 const burger = document.querySelector('.burger_icon');
 const menu = document.querySelector('.nav_list');
+const header = document.querySelector('.header_container')
 
 const toggleMenu = function(){
 	menu.classList.toggle('active');
     burger.classList.toggle('active');
     body.classList.toggle('active');
     body.classList.toggle('overlay');
+    header.classList.toggle('overlay');
 };
 
 const menuLink = document.querySelectorAll('.nav_link');

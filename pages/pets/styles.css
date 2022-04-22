@@ -31,7 +31,7 @@ body.overlay::before {
     bottom: 0;
     background-color: rgba(41, 41, 41, 0.6);
     position: absolute;
-    z-index: 1;/*
+    z-index: 3;/*
     transform: scale(0);
     transition: transform 0.4s ease-in-out;*/
 }
@@ -102,6 +102,10 @@ main {
     top: 0;
     z-index: 7;
     background-color: rgba(255, 255, 255, 0.87);
+}
+
+.header_container.overlay {
+    background-color: var(--color-light-xl);
 }
 
 .header_container {
