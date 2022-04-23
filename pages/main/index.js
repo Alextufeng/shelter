@@ -57,7 +57,7 @@ popupClose.addEventListener('click', function(e) {
     
 });
 
-/*не работает при нажатии вне попапа
+/*не работает при нажатии вне поп-апа
 document.addEventListener('click', function(e) {
     let target = e.target;
     let its_popup = target == popup || popup.contains(target);
@@ -124,8 +124,9 @@ const slideCards = function(){
 
 
 
-/*данные питомцев
-const pet = [
+/*данные питомцев*/
+/*
+const pets = [
     {
       "name": "Jennifer",
       "img": "../../assets/images/jennifer.png",
@@ -214,4 +215,66 @@ const pet = [
       "diseases": ["deafness", "blindness"],
       "parasites": ["lice", "fleas"]
     }
-  ]*/
+  ]
+
+
+const katrine = document.querySelector(".katrine");
+const jennifer = document.querySelector(".jennifer");
+const woody = document.querySelector(".woody");
+const charly = document.querySelector(".charly");
+const freddie = document.querySelector(".freddie");
+const scarlet = document.querySelector(".scarlet");
+const sophia = document.querySelector(".sophia");
+const timmy = document.querySelector(".timmy");
+
+const getCard = function(pets) {
+        if (petCard === katrine) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[4][elem.dataset.pets];
+            }); 
+        } else if (petCard === jennifer) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[0][elem.dataset.pets];
+            }); 
+        } else if (petCard === woody) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[2][elem.dataset.pets];
+            }); 
+        } else if (petCard === charly) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[7][elem.dataset.pets];
+            }); 
+        } else if (petCard === freddie) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[6][elem.dataset.pets];
+            }); 
+        } else if (petCard === scarlet) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[3][elem.dataset.pets];
+            }); 
+        } else if (petCard === sophia) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[1][elem.dataset.pets];
+            }); 
+        } else if (petCard === timmy) {
+            const text = petCard.querySelectorAll('[data-pets]');
+            text.forEach((elem) => {
+                elem.textContent = pets[5][elem.dataset.pets];
+            }); 
+        }
+    }
+
+
+    const text = petCard.querySelectorAll('[data-pets]');
+    text.forEach((elem) => {
+        elem.textContent = pets[i][elem.dataset.pets];
+    });
+}
+petCard.addEventListener('click', () => getCard(pets));*/
