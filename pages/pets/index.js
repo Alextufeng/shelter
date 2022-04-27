@@ -89,7 +89,7 @@ const pets = [
   }
 ]
 
-let activeSlides = [0,1,2];
+let activeSlides = [0,1,2,3,4,5,6,7];
 let size;
 const windowWidth = document.body.clientWidth;
 
@@ -104,12 +104,14 @@ setInterval(()=>{
 */ 
 
 //карточки питомцев
+const petContain = document.querySelector('.pet_container')
 
 const showPet = (item) => {
   const popup = document.querySelector('#popup');
+  
   popup.classList.add('active');
   document.body.classList.toggle('active');
-  document.body.classList.toggle('overlay');
+  petContain.classList.toggle('overlay');
 
   popup.querySelector("#img").src = item.img
   popup.querySelector('[data-pets="name"]').innerHTML = item.name
@@ -124,7 +126,7 @@ const showPet = (item) => {
 
 pets.forEach((item, i)=>{
   let container = document.createElement("div");
-  container.className = `pet_info ${i<3 ? 'active' : ''}`;
+  container.className = `pet_info ${i<8 ? 'active' : ''}`;
   container.addEventListener('click', ()=>showPet(item));
   container.setAttribute('data-id', i);
   let img = document.createElement("img");
@@ -157,7 +159,7 @@ window.addEventListener("resize", function() {
   }
   slideCards();*/
 });
-console.log(size)
+
 })
 
 //бургер меню
@@ -206,10 +208,13 @@ document.addEventListener('click', function(e) {
 const popup = document.querySelector('.pop_up');
 const popupBtnClose = document.querySelector('.pop_up_close');
 
+
+
 const popupClose = function(){
+  const petContain = document.querySelector('.pet_container')
   popup.classList.toggle('active');
   body.classList.toggle('active');
-  body.classList.toggle('overlay');
+  petContain.classList.toggle('overlay');
 }
 
 popupBtnClose.addEventListener('click', function(e) {
@@ -218,11 +223,12 @@ popupBtnClose.addEventListener('click', function(e) {
 });
 
 document.addEventListener('click', function(e) {
+  const petContain = document.querySelector('.pet_container')
     let target = e.target;
     let its_btn = target == popupBtnClose;
-    let body_click = target == body || body.classList.contains(target)
+    let overlay_click = target == petContain || petContain.classList.contains(target)
     let popup_active = popup.classList.contains('active');
-    if(!its_btn && body_click && popup_active) {
+    if(!its_btn && overlay_click && popup_active) {
       popupClose();
     }
 });
@@ -237,16 +243,17 @@ function getRandomIntInclusive(min, max) {
 
 const slideCards = function(e){
 
+  size = 8;
   let newSlides = [];
 
   while(newSlides.length!=size) {
     let x = getRandomIntInclusive(0,7);
-    !activeSlides.includes(x) && !newSlides.includes(x) ? newSlides.push(x) : null
-  }
+    /*!activeSlides.includes(x) && !newSlides.includes(x) ? newSlides.push(x) : null
+  */}
 
   activeSlides = [...newSlides]
-
-  document.querySelectorAll('.pet_info.active').forEach(item=>item.classList.remove('active'))
+/*
+  document.querySelectorAll('.pet_info.active').forEach(item=>item.classList.remove('active'))*/
   activeSlides.forEach(item=> document.querySelector(`.pet_info[data-id="${item}"]`).classList.add('active'))
 };
 
@@ -257,7 +264,7 @@ const btns = document.querySelectorAll(".next");
 
 btns.forEach(item=> item.addEventListener("click", slideCards));
 
-let toSelect = 3;
+let toSelect = 8;
 const cards = document.querySelectorAll('.pet_info');
 const used = [];
 

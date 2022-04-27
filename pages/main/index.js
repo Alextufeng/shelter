@@ -90,7 +90,7 @@ const pets = [
 ]
 
 let activeSlides = [0,1,2];
-let size;
+let size = 3;
 const windowWidth = document.body.clientWidth;
 
 

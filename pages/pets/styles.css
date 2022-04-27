@@ -101,7 +101,7 @@ main {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 7;
+    z-index: 5;
     background-color: rgba(255, 255, 255, 0.87);
 }
 
@@ -807,6 +807,21 @@ section {
 
 .pop_up.active {
     transform: scale(1);
+}
+
+.pet_container.overlay::before {
+    content: '';
+    display: block;
+    height: 500%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(41, 41, 41, 0.6);
+    position: absolute;
+    z-index: 7;/*
+    transform: scale(0);
+    transition: transform 0.4s ease-in-out;*/
 }
 
 /*
