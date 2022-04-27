@@ -11,8 +11,6 @@
     --color-dark-m: #B2B2B2;
 }
 
-/*Все цвета */
-
 html {
     scroll-behavior: smooth;
     background-color: var(--color-light-xl);
@@ -23,7 +21,7 @@ body.active {
     overflow: hidden;
 }
 
-body.overlay::before {
+body.overlay.active::before {
     content: '';
     display: block;
     height: 500%;
@@ -33,14 +31,8 @@ body.overlay::before {
     bottom: 0;
     background-color: rgba(41, 41, 41, 0.6);
     position: fixed;
-    z-index: 1;/*
-    transform: scale(0);
-    transition: transform 0.4s ease-in-out;*/
+    z-index: 1;
 }
-/*
-body.overlay::before {
-    transform: scale(1);
-}*/
 
 .wrapper {
     max-width: 1280px;
@@ -186,14 +178,14 @@ button a:before {
     display: none;
 }
 
-@media /*(min-width: 768px) and*/ (max-width: 1279px) {
+@media (max-width: 1279px) {
     
     .header_container {
         padding: 30px 30px;
     }
 }
 
-@media /*(min-width: 768px) and*/ (max-width: 767px) {
+@media (max-width: 767px) {
     
     .header_container {
         padding: 30px 53px 0 10px;
@@ -224,21 +216,6 @@ button a:before {
         height: 40px;
         width: 40px;
     }
-  
-    /*.nav_menu input[type="checkbox"] {
-        position: absolute;
-        display: block;
-        height: 50px;
-        width: 50px;
-        top: 44px;
-        right: -10px;
-        z-index: 5;
-        opacity: 0;
-    }
-
-    .nav_menu input[type="checkbox"]:hover {
-        cursor: pointer;
-    }*/
   
     .nav_menu .burger_icon {
         display: block;
@@ -273,7 +250,8 @@ button a:before {
         padding-top: 14px;
         background: var(--color-dark-3xl);
         justify-content: center;
-        height: 830px;
+        height: 105vh;
+        /*height: 830px;*/
         width: 320px;
         transform: translate(150%);
         display: flex;
@@ -396,6 +374,11 @@ button:hover .flare {
 }
 
 button:hover {
+    box-shadow: 0px 0px 14px 5px var(--color-primary);
+    background:var(--color-primary-light);
+}
+
+button.active {
     box-shadow: 0px 0px 14px 5px var(--color-primary);
     background:var(--color-primary-light);
 }
@@ -626,147 +609,6 @@ section {
     flex-flow: column wrap;
     gap: 30px;
 }
-
-/*Pop-up. Start.*/
-
-.pop_up {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    z-index: 10;
-    transform: scale(0);
-    transition: transform 0.4s ease-in-out;
-}
-
-.pop_up.active {
-    transform: scale(1);
-}
-
-/*
-.pop_up.no_active {
-    display: none;
-}*/
-
-.pop_up_close {
-    position: absolute;
-    right: 10px;
-    width: 52px;
-    height: 52px;
-    background: none;
-    border: 2px solid var(--color-primary);
-}
-
-.pop_up_content {
-    position: absolute;
-    top: 52px;
-    right: 52px;
-    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-    background-color: var(--color-light-xl);
-    border-radius: 9px;
-    display: flex;
-    flex-direction: row;
-}
-
-.pop_up_content img {
-    width: 500px;
-    height: 500px;
-    border-radius: 9px 0px 0px 9px;
-}
-
-.pop_up_info {
-    width: 351px;
-    margin: 50px 20px 88px 29px;
-}
-
-.pop_up_name {
-    color: #000000;
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-}
-
-.pop_up_breed {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
-    margin-bottom: 40px;
-}
-
-.pop_up_desc {
-    width: 350px;
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
-    margin-bottom: 40px;
-}
-
-.pop_up_age {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-}
-
-.pop_up_inocul {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-}
-
-.pop_up_diseas {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-}
-
-.pop_up_parasite {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
-    margin-bottom: 10px;
-}
-
-.span_text {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
-}
-
-.pop_up_ul {
-    padding-left: 15px;
-}
-
-/*Pop-up. Finish.*/
 
 .pet_info.active:hover {
     transition: 0.23s;
@@ -1395,3 +1237,192 @@ section {
     }
 
 }
+
+/*Pop-up. Start.*/
+
+.pop_up {
+    width: 900px;
+    height: 500px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 10;
+    transform: scale(0);
+    transition: transform 0.4s ease-in-out;
+}
+
+.pop_up.active {
+    transform: scale(1);
+}
+
+/*
+.pop_up.no_active {
+    display: none;
+}*/
+
+.pop_up_close {
+    position: absolute;
+    right: -42px;
+    top: -52px;
+    width: 52px;
+    height: 52px;
+    background: none;
+    border: 2px solid var(--color-primary);
+}
+
+.pop_up_content {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    background-color: var(--color-light-xl);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pop_up_content img {
+    width: 500px;
+    height: 500px;
+    border-radius: 14px 0px 14px 14px;
+}
+
+.pop_up_info {
+    margin: 50px 20px 0px 29px;
+}
+
+.pop_up_name {
+    color: #000000;
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+}
+
+.pop_up_breed {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+}
+
+.pop_up_desc {
+    width: 350px;
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    margin-bottom: 40px;
+}
+
+.pop_up_age,
+.pop_up_inocul,
+.pop_up_diseas,
+.pop_up_parasite {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+}
+
+.span_text {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+}
+
+.pop_up_ul {
+    padding-left: 15px;
+    list-style: none;
+}
+
+.pop_up li {
+    padding-left: 0em; 
+    text-indent: -.7em;
+}
+
+.pop_up li::before {
+    content: "• ";
+    color: var(--color-primary);
+}
+
+@media (max-width: 1279px) {
+    .pop_up {
+        width: 630px;
+        height: 350px;
+    }
+
+    .pop_up_content img {
+        width: 350px;
+        height: 350px;
+    }
+
+    .pop_up_info {
+        margin: 10px 9px 0px 11px;
+    }
+
+    .pop_up_breed {
+        margin-bottom: 20px;
+    }
+
+    .pop_up_desc {
+        width: 260px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    .pop_up_age,
+    .pop_up_inocul,
+    .pop_up_diseas,
+    .pop_up_parasite {
+        margin-bottom: 5px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .pop_up {
+        width: 240px;
+        height: 341px;
+    }
+
+    .pop_up_close{
+        right: -31px;
+    }
+
+    .pop_up_content img {
+        display: none;
+    }
+
+    .pop_up_name,
+    .pop_up_breed {
+        text-align: center;
+    }
+
+    .pop_up_info {
+        margin: 10px;
+    }
+
+    .pop_up_desc {
+        width: 220px;
+        margin-bottom: 24px;
+    }
+}
+
+/*Pop-up. Finish.*/
