@@ -475,7 +475,7 @@ section {
 .this_page:hover {
     width: 52px;
     height: 52px;
-    color: var(--color-primary);
+    color: var(--color-dark-3xl);
     background: var(--color-primary);
     cursor: unset;
 }

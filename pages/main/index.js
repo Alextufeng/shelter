@@ -1,3 +1,5 @@
+console.log('огромное спасибо за понимание. несколько дней были проблемы с компом. к вечеру всё добъю. если есть возможность проверьте, пож, попозже');
+
 const pets = [
   {
     "name": "Jennifer",
@@ -89,192 +91,183 @@ const pets = [
   }
 ]
 
-let activeSlides = [0,1,2];
-let size = 3;
-const windowWidth = document.body.clientWidth;
-
+let activeSlides = [];
+let size;
+//let windowWidth;
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
-/*
-let timer = 7000;
-setInterval(()=>{
-  document.querySelector('.next').click();
-},timer)
-*/ 
+  /*
+  let timer = 7000;
+  setInterval(()=>{
+    document.querySelector('.next').click();
+  },timer)
+  */ 
 
-//карточки питомцев
+  //наполнение слайдера
 
-const showPet = (item) => {
-  const popup = document.querySelector('#popup');
-  popup.classList.add('active');
-  document.body.classList.toggle('active');
-  document.body.classList.toggle('overlay');
+  const slideCards = function(e){
 
-  popup.querySelector("#img").src = item.img
-  popup.querySelector('[data-pets="name"]').innerHTML = item.name
-  popup.querySelector('[data-pets="type"]').innerHTML = item.type
-  popup.querySelector('[data-pets="breed"]').innerHTML = item.breed
-  popup.querySelector('[data-pets="age"]').innerHTML = item.age
-  popup.querySelector('[data-pets="description"]').innerHTML = item.description
-  popup.querySelector('[data-pets="inoculations"]').innerHTML = item.inoculations.join(', ')
-  popup.querySelector('[data-pets="diseases"]').innerHTML = item.diseases.join(', ')
-  popup.querySelector('[data-pets="parasites"]').innerHTML = item.parasites.join(', ')
-}
+    let newSlides = [];
 
-pets.forEach((item, i)=>{
-  let container = document.createElement("div");
-  container.className = `pet_info ${i<3 ? 'active' : ''}`;
-  container.addEventListener('click', ()=>showPet(item));
-  container.setAttribute('data-id', i);
-  let img = document.createElement("img");
-  img.src = item.img;
+    while(newSlides.length!=size) {
+      let x = getRandomIntInclusive(0,7);
+      !activeSlides.includes(x) && !newSlides.includes(x) ? newSlides.push(x) : null
+    }
 
-  let h3 = document.createElement("h3");
-  h3.innerHTML = item.name;
+    activeSlides = [...newSlides]
 
-  let button = document.createElement("button");
-  button.innerHTML = 'Learn more<span class="flare"></span>';
+    document.querySelectorAll('.pet_info.active').forEach(item=>item.classList.remove('active'))
+    activeSlides.forEach(item=> document.querySelector(`.pet_info[data-id="${item}"]`).classList.add('active')) 
+  };
 
-  container.append(img);
-  container.append(h3);
-  container.append(button);
-  document.querySelector('#pets').append(container);
-});
+  //карточки питомцев
 
-window.addEventListener("resize", function() {
-  console.log("Resource conscious resize callback!");
-  /*if(windowWidth >= 1280) {
-    size = 3;
-    activeSlides = [0,1,2];
-  } else if (windowWidth < 1280 && windowWidth >= 768) {
-    size = 2;
-    activeSlides.pop();
-  
-  } else if (windowWidth < 768){
-    size = 1;
-    activeSlides.pop();
+  const showPet = (item) => {
+    const popup = document.querySelector('#popup');
+    popup.classList.add('active');
+    document.body.classList.toggle('active');
+    document.body.classList.toggle('overlay');
+
+    popup.querySelector("#img").src = item.img
+    popup.querySelector('[data-pets="name"]').innerHTML = item.name
+    popup.querySelector('[data-pets="type"]').innerHTML = item.type
+    popup.querySelector('[data-pets="breed"]').innerHTML = item.breed
+    popup.querySelector('[data-pets="age"]').innerHTML = item.age
+    popup.querySelector('[data-pets="description"]').innerHTML = item.description
+    popup.querySelector('[data-pets="inoculations"]').innerHTML = item.inoculations.join(', ')
+    popup.querySelector('[data-pets="diseases"]').innerHTML = item.diseases.join(', ')
+    popup.querySelector('[data-pets="parasites"]').innerHTML = item.parasites.join(', ')
   }
-  slideCards();*/
-});
-console.log(size)
-})
 
-//бургер меню
-const body = document.querySelector('body')
-const burger = document.querySelector('.burger_icon');
-const menu = document.querySelector('.nav_list');
+  const getSize = () => {
+    if (document.body.clientWidth > 1279) {
+      size = 3;
+    } else if (document.body.clientWidth > 767) {
+      size = 2; 
+    } else {
+      size = 1;
+    }
+  
+    slideCards()
+  }
 
-//затемнения при активном бургере и тд
-const toggleMenu = function(){
-  	menu.classList.toggle('active');
+  //затемнения при активном бургере и тд
+  const toggleMenu = function(){
+    menu.classList.toggle('active');
     burger.classList.toggle('active');
     body.classList.toggle('active');
     body.classList.toggle('overlay');
-};
-
-//прячу меню при переходе по ссылке
-const menuLink = document.querySelectorAll('.nav_link');
-for (let i=0 ; i<menuLink.length; i++) {
-  menuLink[i].addEventListener("click", function(){
-    let burger_is_active = burger.classList.contains('active');
-    if (burger_is_active){
-      toggleMenu();
-    };
-  });
-}
-
-//нажатие на бургер
-burger.addEventListener('click', function(e) {
-    e.stopPropagation();
-    toggleMenu();
-});
-
-//нажатие мимо бургера
-document.addEventListener('click', function(e) {
-    let target = e.target;
-    let its_menu = target == menu || menu.contains(target);
-    let its_btnMenu = target == burger;
-    let menu_is_active = menu.classList.contains('active');
-    
-    if (!its_menu && !its_btnMenu && menu_is_active) {
-        toggleMenu();
-    }
-});
-
-//модалка
-const popup = document.querySelector('.pop_up');
-const popupBtnClose = document.querySelector('.pop_up_close');
-
-const popupClose = function(){
-  popup.classList.toggle('active');
-  body.classList.toggle('active');
-  body.classList.toggle('overlay');
-}
-
-popupBtnClose.addEventListener('click', function(e) {
-    e.stopPropagation();
-    popupClose();    
-});
-
-document.addEventListener('click', function(e) {
-    let target = e.target;
-    let its_btn = target == popupBtnClose;
-    let body_click = target == body || body.classList.contains(target)
-    let popup_active = popup.classList.contains('active');
-    if(!its_btn && body_click && popup_active) {
-      popupClose();
-    }
-});
-
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-//наполнение слайдера
-
-const slideCards = function(e){
-
-  let newSlides = [];
-
-  while(newSlides.length!=size) {
-    let x = getRandomIntInclusive(0,7);
-    !activeSlides.includes(x) && !newSlides.includes(x) ? newSlides.push(x) : null
-  }
-
-  activeSlides = [...newSlides]
-
-  document.querySelectorAll('.pet_info.active').forEach(item=>item.classList.remove('active'))
-  activeSlides.forEach(item=> document.querySelector(`.pet_info[data-id="${item}"]`).classList.add('active'))
-};
-
-
-
-const petBlock = document.querySelector('.pet_container');
-const btns = document.querySelectorAll(".next");
-
-btns.forEach(item=> item.addEventListener("click", slideCards));
-
-let toSelect = 3;
-const cards = document.querySelectorAll('.pet_info');
-const used = [];
-
-while (toSelect !== 0) {
-    const index = Math.floor(Math.random() * cards.length);
-
-    if (used.length === cards.length) break;
-    if (used.includes(index)) continue;
-
-    cards[index].classList.add('active');
-    used.push(index);
-    toSelect--;
   };
-  
-  
-  
-  
-  
 
+  pets.forEach((item, i)=>{
+    let container = document.createElement("div");
+    container.className = `pet_info ${i<3 ? 'active' : ''}`;
+    container.addEventListener('click', ()=>showPet(item));
+    container.setAttribute('data-id', i);
+    let img = document.createElement("img");
+    img.src = item.img;
 
+    let h3 = document.createElement("h3");
+    h3.innerHTML = item.name;
+
+    let button = document.createElement("button");
+    button.innerHTML = 'Learn more<span class="flare"></span>';
+
+    container.append(img);
+    container.append(h3);
+    container.append(button);
+    document.querySelector('#pets').append(container);
+  });
+
+  //getSize()
+  
+  //Отслеживание изменения размера окна.
+  window.onload = getSize;
+  window.addEventListener("resize", getSize);
+
+    //бургер меню
+    const body = document.querySelector('body')
+    const burger = document.querySelector('.burger_icon');
+    const menu = document.querySelector('.nav_list');
+
+    //прячу меню при переходе по ссылке
+    const menuLink = document.querySelectorAll('.nav_link');
+    for (let i=0 ; i<menuLink.length; i++) {
+      menuLink[i].addEventListener("click", function(){
+        let burger_is_active = burger.classList.contains('active');
+        if (burger_is_active){
+          toggleMenu();
+        };
+      });
+    }
+
+    //нажатие на бургер
+    burger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    //нажатие мимо бургера
+    document.addEventListener('click', function(e) {
+        let target = e.target;
+        let its_menu = target == menu || menu.contains(target);
+        let its_btnMenu = target == burger;
+        let menu_is_active = menu.classList.contains('active');
+        
+        if (!its_menu && !its_btnMenu && menu_is_active) {
+            toggleMenu();
+        }
+    });
+
+    //модалка
+    const popup = document.querySelector('.pop_up');
+    const popupBtnClose = document.querySelector('.pop_up_close');
+
+    const popupClose = function(){
+      popup.classList.toggle('active');
+      body.classList.toggle('active');
+      body.classList.toggle('overlay');
+    }
+
+    popupBtnClose.addEventListener('click', function(e) {
+        e.stopPropagation();
+        popupClose();    
+    });
+
+    document.addEventListener('click', function(e) {
+        let target = e.target;
+        let its_btn = target == popupBtnClose;
+        let body_click = target == body || body.classList.contains(target)
+        let popup_active = popup.classList.contains('active');
+        if(!its_btn && body_click && popup_active) {
+          popupClose();
+        }
+    });
+
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    const btns = document.querySelectorAll(".next");
+
+    btns.forEach(item=> item.addEventListener("click", slideCards));
+
+    let toSelect = 3;
+    const cards = document.querySelectorAll('.pet_info');
+    const used = [];
+
+    while (toSelect !== 0) {
+        const index = Math.floor(Math.random() * cards.length);
+
+        if (used.length === cards.length) break;
+        if (used.includes(index)) continue;
+
+        cards[index].classList.add('active');
+        used.push(index);
+        toSelect--;
+      };
+})
+ 

@@ -89,78 +89,122 @@ const pets = [
   }
 ]
 
+let arrSettings = {
+  0 : 0,
+  1 : 0,
+  2 : 0,
+  3 : 0,
+  4 : 0,
+  5 : 0,
+  6 : 0,
+  7 : 0,
+  8 : 0,
+}
+
 let activeSlides = [0,1,2,3,4,5,6,7];
 let size;
-const windowWidth = document.body.clientWidth;
-
+let activePage = 1;
+let totalPage = 6;
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
-/*
-let timer = 7000;
-setInterval(()=>{
-  document.querySelector('.next').click();
-},timer)
-*/ 
 
-//карточки питомцев
-const petContain = document.querySelector('.pet_container')
+  const createArray = () =>{
+    let newArray = [];
+    let lastElem;
+    while (newArray.length < 48) {
+      let randomElement = getRandomIntInclusive(0 , 7);
+      if(arrSettings[randomElement] !== 6 && lastElem !== pets[randomElement].name) {
+        arrSettings[randomElement]+=1;
+        let copy = Object.assign({}, pets[randomElement]);
+        lastElem = pets[randomElement].name
+        newArray.push(copy)
+      }
 
-const showPet = (item) => {
-  const popup = document.querySelector('#popup');
-  
-  popup.classList.add('active');
-  document.body.classList.toggle('active');
-  petContain.classList.toggle('overlay');
+    }
 
-  popup.querySelector("#img").src = item.img
-  popup.querySelector('[data-pets="name"]').innerHTML = item.name
-  popup.querySelector('[data-pets="type"]').innerHTML = item.type
-  popup.querySelector('[data-pets="breed"]').innerHTML = item.breed
-  popup.querySelector('[data-pets="age"]').innerHTML = item.age
-  popup.querySelector('[data-pets="description"]').innerHTML = item.description
-  popup.querySelector('[data-pets="inoculations"]').innerHTML = item.inoculations.join(', ')
-  popup.querySelector('[data-pets="diseases"]').innerHTML = item.diseases.join(', ')
-  popup.querySelector('[data-pets="parasites"]').innerHTML = item.parasites.join(', ')
-}
-
-pets.forEach((item, i)=>{
-  let container = document.createElement("div");
-  container.className = `pet_info ${i<8 ? 'active' : ''}`;
-  container.addEventListener('click', ()=>showPet(item));
-  container.setAttribute('data-id', i);
-  let img = document.createElement("img");
-  img.src = item.img;
-
-  let h3 = document.createElement("h3");
-  h3.innerHTML = item.name;
-
-  let button = document.createElement("button");
-  button.innerHTML = 'Learn more<span class="flare"></span>';
-
-  container.append(img);
-  container.append(h3);
-  container.append(button);
-  document.querySelector('#pets').append(container);
-});
-
-window.addEventListener("resize", function() {
-  console.log("Resource conscious resize callback!");
-  /*if(windowWidth >= 1280) {
-    size = 3;
-    activeSlides = [0,1,2];
-  } else if (windowWidth < 1280 && windowWidth >= 768) {
-    size = 2;
-    activeSlides.pop();
-  
-  } else if (windowWidth < 768){
-    size = 1;
-    activeSlides.pop();
+    return newArray;
   }
-  slideCards();*/
-});
 
-})
+  let newArrayWithData = createArray();
+  console.log(newArrayWithData)
+
+
+  const createPageArray = (size) =>{
+    let arrayCopy = [...newArrayWithData];
+    let newArray = [];
+    for(let i= 0; i < arrayCopy.length!=0 ; i++ ){
+      newArray.push(arrayCopy.splice(0, size))
+    }
+
+    return newArray;
+  }
+
+
+/*
+  const render = () => {
+    let data = createPageArray(8)
+    let countPage = document.querySelector('#thisPage').innerHTML = activePage;
+  }*/
+
+  //карточки питомцев
+  const petContain = document.querySelector('.pet_container')
+
+  const showPet = (item) => {
+    const popup = document.querySelector('#popup');
+    
+    popup.classList.add('active');
+    document.body.classList.toggle('active');
+    petContain.classList.toggle('overlay');
+
+    popup.querySelector("#img").src = item.img
+    popup.querySelector('[data-pets="name"]').innerHTML = item.name
+    popup.querySelector('[data-pets="type"]').innerHTML = item.type
+    popup.querySelector('[data-pets="breed"]').innerHTML = item.breed
+    popup.querySelector('[data-pets="age"]').innerHTML = item.age
+    popup.querySelector('[data-pets="description"]').innerHTML = item.description
+    popup.querySelector('[data-pets="inoculations"]').innerHTML = item.inoculations.join(', ')
+    popup.querySelector('[data-pets="diseases"]').innerHTML = item.diseases.join(', ')
+    popup.querySelector('[data-pets="parasites"]').innerHTML = item.parasites.join(', ')
+  }
+
+  pets.forEach((item, i)=>{
+    let container = document.createElement("div");
+    container.className = `pet_info ${i<8 ? 'active' : ''}`;
+    container.addEventListener('click', ()=>showPet(item));
+    container.setAttribute('data-id', i);
+    let img = document.createElement("img");
+    img.src = item.img;
+
+    let h3 = document.createElement("h3");
+    h3.innerHTML = item.name;
+
+    let button = document.createElement("button");
+    button.innerHTML = 'Learn more<span class="flare"></span>';
+
+    container.append(img);
+    container.append(h3);
+    container.append(button);
+    document.querySelector('#pets').append(container);
+  });
+
+  const getSize = () => {
+    if (document.body.clientWidth > 1279) {
+      size = 8;
+    } else if (document.body.clientWidth > 767) {
+      size = 6; 
+    } else {
+      size = 3;
+    }
+  
+    createPageArray()
+  }
+
+//Отслеживание изменения размера окна.
+window.onload = getSize;
+window.addEventListener("resize", getSize)
+
+
 
 //бургер меню
 const body = document.querySelector('body')
@@ -248,40 +292,12 @@ const slideCards = function(e){
 
   while(newSlides.length!=size) {
     let x = getRandomIntInclusive(0,7);
-    /*!activeSlides.includes(x) && !newSlides.includes(x) ? newSlides.push(x) : null
-  */}
+    !activeSlides.includes(x) && !newSlides.includes(x) ? newSlides.push(x) : null
+  }
 
   activeSlides = [...newSlides]
-/*
-  document.querySelectorAll('.pet_info.active').forEach(item=>item.classList.remove('active'))*/
+
+  document.querySelectorAll('.pet_info.active').forEach(item=>item.classList.remove('active'))
   activeSlides.forEach(item=> document.querySelector(`.pet_info[data-id="${item}"]`).classList.add('active'))
 };
-
-
-
-const petBlock = document.querySelector('.pet_container');
-const btns = document.querySelectorAll(".next");
-
-btns.forEach(item=> item.addEventListener("click", slideCards));
-
-let toSelect = 8;
-const cards = document.querySelectorAll('.pet_info');
-const used = [];
-
-while (toSelect !== 0) {
-    const index = Math.floor(Math.random() * cards.length);
-
-    if (used.length === cards.length) break;
-    if (used.includes(index)) continue;
-
-    cards[index].classList.add('active');
-    used.push(index);
-    toSelect--;
-  };
-  
-  
-  
-  
-  
-
-
+});
